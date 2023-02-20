@@ -1,0 +1,40 @@
+@startuml
+
+actor User as u
+
+u -> "m::Menu" as m
+note left: Selecting add car option
+activate m
+
+m -> m : enterCarDetails()
+activate m
+
+m -> "kbr::Keyboard" as kbr : n=getString()
+activate kbr
+kbr -> u
+activate u
+deactivate u
+deactivate kbr
+
+m -> kbr : c=getString()
+activate kbr
+kbr -> u
+activate u
+deactivate u
+deactivate kbr
+
+m -> kbr : S=getString()
+activate kbr
+kbr -> u
+activate u
+deactivate u
+deactivate kbr
+
+m -> "Car" as c **
+m -> c : addCarDetails(c,s)
+activate c
+deactivate c
+deactivate m
+
+
+@enduml

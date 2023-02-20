@@ -1,0 +1,24 @@
+@startuml
+
+actor User as u
+
+u -> "m::Menu" as m
+note left: Selecting add car option
+activate m
+
+m -> m : displayCarDetails()
+activate m
+alt hasNoCars
+    m -> m : errorMessage
+else hasCars
+    loop hasNext
+        m -> m : toString()
+        activate Car
+        deactivate Car
+    end
+end
+deactivate m
+
+deactivate m
+
+@enduml
